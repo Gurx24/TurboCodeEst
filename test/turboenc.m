@@ -35,7 +35,7 @@ for i = 1:L
         xk = rem(g(1,2:K)*state', 2);   % terminate the trellis
     end
     xak = rem(g(1,:)*[xk state]', 2);   % feedback
-    [outputbits, state] = convencode(g, xak, state);
-    outputbits(1, 1)    = xk;
-    y(n*(i-1)+1:n*i)    = outputbits;
-end
+    [op, state]      = convencode(g, xak, state);
+    op(1, 1)         = xk;
+    y(n*(i-1)+1:n*i) = op;
+end 
