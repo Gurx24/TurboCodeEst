@@ -1,10 +1,10 @@
-%%%%%%%%%%%%%%%%% convencode.m %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% convencode.m %%%%%%%%%%%%%%%%%%%
 %
-% This function realized convolutional encoding.
+% This function realized 1/n convolutional encoding.
 %
 % date:2025.5.12  Gurx
 %
-% [out] = convencode(in, G, state)
+% [out, state] = convencode(in, G, state)
 %
 % ******************************************************
 % in    : input information bits
@@ -13,10 +13,15 @@
 % out   : output codewords
 % ******************************************************
 
-function [out, state] = convencode(in, G, state)
+function [out, state] = convencode(g, in, state)
 
-[k, n] = size(G);
-G      = dec2bin(base2dec(num2str(G), 8)) - '0';
-
-
+[n,k] = size(g);        % convolutional code parameters
+m     = k-1;            % number of register
+out   = zeros(1, n);
+for i = 1:n
+    out(i) = g(i,1) * in;
+    for j = 2:k
+        out(i) = xor(out(i),g(i,j)*state(j-1));
+    end
 end
+state = [in, state(1:m-1)];
