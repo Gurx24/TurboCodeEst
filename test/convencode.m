@@ -8,7 +8,7 @@
 %
 % ******************************************************
 % in    : input information bits
-% g     : octal generator matrix of convolutional code
+% g     : generator matrix of convolutional code
 % state : state of register
 % out   : output codewords
 % ******************************************************
