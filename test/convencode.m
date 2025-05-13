@@ -4,11 +4,11 @@
 %
 % date:2025.5.12  Gurx
 %
-% [out, state] = convencode(in, G, state)
+% [out, state] = convencode(in, g, state)
 %
 % ******************************************************
 % in    : input information bits
-% G     : octal generator matrix of convolutional code
+% g     : octal generator matrix of convolutional code
 % state : state of register
 % out   : output codewords
 % ******************************************************
